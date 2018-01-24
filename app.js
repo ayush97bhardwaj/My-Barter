@@ -20,7 +20,7 @@ var indexRoutes=require("./routes/index")
 mongoose.Promise = global.Promise;
 
 var url=process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
-mongoose.connect("url",{useMongoClient: true});
+mongoose.connect(url,{useMongoClient: true});
 
 
 //mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
