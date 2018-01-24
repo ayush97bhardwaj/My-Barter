@@ -22,7 +22,7 @@ mongoose.Promise = global.Promise;
 var url=process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
 mongoose.connect("url",{useMongoClient: true});
 //mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
-mongoose.connect("mongodb://colt:rusty@ds113358.mlab.com:13358/yelpcamp", {useMongoClient: true});
+//mongoose.connect("mongodb://colt:rusty@ds113358.mlab.com:13358/yelpcamp", {useMongoClient: true});
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
