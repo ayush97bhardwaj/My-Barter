@@ -19,7 +19,8 @@ var indexRoutes=require("./routes/index")
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
+//mongoose.connect("mongodb://localhost/yelp_camp", {useMongoClient: true});
+mongoose.connect("mongodb://colt:rusty@ds113358.mlab.com:13358/yelpcamp", {useMongoClient: true});
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
