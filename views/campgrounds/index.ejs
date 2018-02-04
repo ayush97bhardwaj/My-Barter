@@ -4,29 +4,14 @@
 
 <div class="container">
 <header class="jumbotron">
-<h1>Welcome to Yelp-Camp!</h1>
-<p>View our hand-picked campgrounds from all over the world</p>
-<p><a class="btn btn-primary btn-large" href="/campgrounds/new">Add new Camp</a></p>
+<h1><center><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> Welcome to My-Barter!</center></h1>
+<br>
+<h4><center>Biggest cross platform payment conversion barter like gateway!</center></h4>
+<p><center><a class="btn btn-success btn-large" href="/barter/new"><h4>Pay using My-Barter!</h4></a></center></p>
 </header>
 
 <div class="row text-center" style="display:flex; flex-wrap:wrap;">
 
-
-	<% campgrounds.forEach(function(campground){ %>
-		<div class="col-md-3 col-sm-6">
-		 <div class="thumbnail">
-         <img src="<%=campground.image %>">
-		 <div class="caption">
-		 </div>
-		<h4><%=campground.name %></h4> 
-		 <a href="/campgrounds/<%= campground._id%>" class="btn btn-primary" style="margin-bottom:3px">More Info!</a>
-		 </div>
-		 
-		</div>
-		
-		 
-
-	<% }); %>
 </div>
 </div>
 <% include ../partials/footer %>

@@ -1,0 +1,49 @@
+    <!--link rel="shortcut icon" href="/images/favicon.ico" -->
+    <link rel="shortcut icon" href="/images/concentric-circles.png" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+    body{
+        background-color: white;
+    }
+    .form-signin{
+        margin-left: 30%;
+        margin-right: 30%;
+        border-radius: 5%;
+    }
+    ul{
+        padding: 0px;
+    }
+    /* li{
+        display:inline-block;
+    } */
+    /* li::before{
+        content:"\25aa";
+        padding: 10px;
+    } */
+</style>
+<% include ./partials/header %>
+<div class="container">
+    <div class="form-signin">
+        <h3 class="display-4 text-center" style="padding-bottom:20px;">Sign in</h3>
+        <ul>
+            <%- msg %>
+        </ul>
+        <form action="/signin" method="post" class="form">
+            <div class="form-group">
+                <label for="email" class="form-text">email</label>
+                <input type="text" name="email" class="form-control" placeholder="email">
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-text">Password: </label>
+                <input type="password" name="password" class="form-control" placeholder="password">
+            </div>
+            <div>
+                <button class="btn btn-primary btn-lg btn-block">login</button>
+            </div>
+            <hr>
+            <h6 class="text-muted text-center">Or</h6>
+            <a href="/auth/google" class="btn btn-block">login with google</a>
+        </form>
+    </div>
+</div>

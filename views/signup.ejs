@@ -1,0 +1,198 @@
+    <link rel="shortcut icon" href="/images/concentric-circles.png" >
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<style>
+    body{
+        background-color: white;
+    }
+    .form-signup{
+        margin-left: 30%;
+        margin-right: 30%;
+        border-radius: 5%;
+    }
+    ul{
+        padding: 0px;
+    }
+    /* li{
+        display:inline-block;
+    } */
+    /* li::before{
+        content:"\25aa";
+        padding: 10px;
+    } */
+    #passerr{
+        position: relative;
+        z-index: 1;
+        padding: 5px;
+        display: none;
+        left: 280px;
+        top:-50px;
+        background-color: rgba(146, 102, 102, 0.3);
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+    }
+</style>
+<% include ./partials/header %>
+<div class="container">
+    <div class="form-signup">
+        <h3 class="display-4 text-center" style="padding-bottom:20px;">Sign up</h3>
+        <ul>
+            <%- msg %>
+        </ul>
+        <form action="/signup" method="post" onSubmit="return validate()">
+            <div class="form-group">
+                <label for="firstname">firstname: </label>
+                <input type="text" name="firstname" class="form-control" id="firstname">
+            </div>
+            <div class="form-group">
+                <label for="lastname">lastname: </label>
+                <input type="text" name="lastname" class="form-control" id="lastname">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number: </label>
+                <input type="text" name="phone" class="form-control" id="phone">
+            </div>
+            <div class="form-group">
+                <label for="email">email: </label>
+                <input type="text" name="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password: </label>
+                <input type="password" name="password" class="form-control" id="password">
+                <div id="passerr">Password should at least have 8 character</div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary btn-lg" style="padding-left:30px;padding-right:30px;margin-top:10px;">register</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $('button').attr("disabled","disabled");
+    function ValidateEmail(mail)   
+    {  
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))  
+        {  
+            return (true)  
+        }  
+        return (false)  
+    } 
+    if('{{{msg}}}')
+    {
+        const msg='{{{msg}}}';
+        if(msg.indexOf("firstname")!=-1){
+            $("#firstname").addClass("border-danger");
+        }
+        else{
+            $("#firstname").addClass("border-success");
+        }
+        if(msg.indexOf("lastname")!=-1){
+            $("#lastname").addClass("border-danger");
+        }
+        else{
+            $("#lastname").addClass("border-success");
+        }
+        if(msg.indexOf("phone")!=-1){
+            $("#phone").addClass("border-danger");
+        }
+        else{
+            $("#phone").addClass("border-success");
+        }
+        if(msg.indexOf("email")!=-1){
+            $("#email").addClass("border-danger");
+        }
+        else{
+            $("#email").addClass("border-success");
+        }
+        if(msg.indexOf("password")!=-1){
+            $("#password").addClass("border-danger");
+        }
+        else{
+            $("#password").addClass("border-success");
+        }
+    }
+    $('#password').attr( 'autocomplete', 'new-password' );
+    $('#password').change(function(){
+        let txt=$(this).val();
+        console.log(txt+" "+txt.length);
+        if(txt.length<8){
+            $('#passerr').show();
+            $(this).addClass("border-danger");
+            $(this).removeClass("border-success");
+        }
+        else{
+            $('#passerr').hide();
+            $(this).addClass("border-success");
+            $(this).removeClass("border-danger");
+        }
+        
+    });
+    $('#email').change(function(){
+        const email=$(this).val();
+        if(ValidateEmail(email)){
+            $(this).addClass("border-success");
+            $(this).removeClass("border-danger");
+        }
+        else{
+            $(this).addClass("border-danger");
+            $(this).removeClass("border-success");
+        }
+    });
+    $('#firstname').change(function(){
+        const firstname=$(this).val();
+        if(firstname.length==0){
+            $(this).addClass("border-danger");
+            $(this).removeClass("border-success");
+        }
+        else{
+            $(this).addClass("border-success");
+            $(this).removeClass("border-danger");
+        }
+    });
+    $('#lastname').change(function(){
+        const firstname=$(this).val();
+        if(firstname.length==0){
+            $(this).addClass("border-danger");
+            $(this).removeClass("border-success");
+        }
+        else{
+            $(this).addClass("border-success");
+            $(this).removeClass("border-danger");
+        }
+    });
+    $('#phone').change(function(){
+        const phone=$(this).val();
+        if(phone.length==0){
+            $(this).addClass("border-danger");
+            $(this).removeClass("border-success");
+        }
+        else{
+            $(this).addClass("border-success");
+            $(this).removeClass("border-danger");
+        }
+    });
+    $('input').change(function(){
+        
+        const firstname=$('#firstname').val();
+        const lastname=$('#lastname').val();
+        const phone=$('#phone').val();
+        const email=$('#email').val();
+        const password=$('#password').val();                        
+        
+        if(firstname!='' && lastname!='' && phone!='' && email!='' && password!=''){
+            console.log('ALL INPUTS FILLED');
+            if($('input').hasClass("border-danger")){
+                console.log(123);
+                $('button').attr("disabled","disabled");
+            }
+            else{
+                console.log(321);
+                $("button").removeAttr("disabled");
+            }
+        }
+        else{
+            console.log('some inputs empty')
+            $('button').attr("disabled","disabled");
+        }
+    });
+</script>

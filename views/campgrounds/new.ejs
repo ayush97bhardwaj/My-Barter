@@ -1,20 +1,44 @@
 <% include ../partials/header %>
 <div class="container">
     <div class="row">
-                <h1 style="text-align:center"> Creating a new Campground </h1>
+                <ul style="margin-left:300px;">
+                    <%- msg %>
+                </ul>                
+                <h1 style="text-align:center"> New Barter Transaction </h1>
                 <div style="width:30% ; margin:25px auto">
-                    <form action="/campgrounds" method="POST">
+                    <form action="/transaction" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="name" name="name">    
+                        <input type="text" class="form-control name" placeholder="Recipient's name" name="name">    
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" placeholder="price" name="price" min="0.01" step="0.01">    
+                        <input type="text" class="form-control number" placeholder="Recipient's Contact number" name="number">    
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="image url" name="image">    
+                        <input type="text" class="form-control email" placeholder="Recipient's email" name="email">    
                     </div>
+                    <hr>
+                    <div class="form-group form-row">
+                        <h4>Select a payment method:</h4>
+                        
+                        <label>Standard Money 
+                            <image src="http://freevector.co/wp-content/uploads/2012/10/69881-give-money.png" height="20%" width="20%">
+                            <input type="radio" class="form-control radio" placeholder="Payment method" name="method" value="money">
+                        </label>
+
+                        <label>Cryptocurrency 
+                            <image src="http://pngimg.com/uploads/bitcoin/bitcoin_PNG47.png" height="20%" width="20%">
+                            <input type="radio" class="form-control radio" placeholder="Payment method" name="method" value="crypto">
+                        </label>
+                        
+                        <label>Solid Commodity 
+                            <image src="http://i.imgur.com/GpUt73b.png" height="20%" width="20%">
+                            <input type="radio" class="form-control radio" placeholder="Payment method" name="method" value="commodity">    
+                        </label>
+                        
+                    </div>
+                    <hr>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="description" name="description">    
+                        <textarea class="form-control desc" placeholder="Description" name="description" rows="4" cols="50"></textarea>    
                     </div>
                     
                     <div class="form-group">
@@ -28,3 +52,55 @@
     </div>
 </div>
 <% include ../partials/footer %>
+<script>
+    var input=$("input").val();
+    console.log(input);
+    if(input==''){
+        console.log(23);
+        $("button").attr("disabled","disabled");
+    }
+    else{
+        console.log(09);
+        $("button").removeAttr("disabled");
+    }
+    $("input").change(function(){
+        if($(".name").val()=='' || $(".email").val()=='' || $(".number").val()=='' ){
+            $("button").removeAttr("disabled");
+        }
+        console.log(1298);
+        if($('.radio').is(':checked')){
+            $("button").removeAttr("disabled");
+        }
+        else{
+            $("button").attr("disabled","disabled");
+        }
+    });
+    if($(".name").val()==''){
+        $("button").attr("disabled","disabled");
+    }
+    $(".name").change(function(){
+        if($("this").val()==''){
+            $("button").attr("disabled","disabled");
+        }
+    });
+
+    if($(".email").val()==''){
+        console.log('no email');
+        $("button").attr("disabled","disabled");
+    }
+    $(".email").change(function(){
+        if($("this").val()==''){
+            $("button").attr("disabled","disabled");
+        }
+    });
+
+    if($(".number").val()==''){
+        $("button").attr("disabled","disabled");
+    }
+    $(".number").change(function(){
+        if($("this").val()==''){
+            $("button").attr("disabled","disabled");
+        }
+    });
+
+</script>
